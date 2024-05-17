@@ -10,7 +10,8 @@ function Form() {
         lastName: '',
         age: 0,
         salary: 0,
-        // image: null
+        image: null,
+        imagePreviewUrl: ''
     });
 
 
@@ -65,10 +66,26 @@ function Form() {
     };
 
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFormData({ ...formData, image: file });
+                setFormData({ ...formData, imagePreviewUrl: reader.result });
+
+                // setImageFile(file); // Save the file to state
+                // setImagePreviewUrl(reader.result); // Save the preview URL to state
+            };
+            reader.readAsDataURL(file); // Read the file as a data URL
+        }
+    };
+
+
     // reseting all input on pressing submit button
     const handleSubmitBtn = (event) => {
         event.preventDefault();
-        setFormData({ firstName: "", lastName: "", age: 0, salary: 0 })
+        setFormData({ firstName: "", lastName: "", age: 0, salary: 0, image: null, imagePreviewUrl: '' })
     }
 
 
@@ -155,19 +172,26 @@ function Form() {
                 </div>
 
 
-                {/* <div className='user-image'>
+                <div className='user-image'>
 
                     <h4>Image</h4>
 
                     <input
                         type='file'
-                        placeholder='image'
-                        name='image'
-                        value={formData.salary}
-                        // onChange={handleChange}
+                        id="imageUpload"
+                        accept="image/*"
+                        onChange={handleImageChange}
                         required
                     />
-                </div> */}
+                </div>
+
+                {formData.imagePreviewUrl && (
+                    <div>
+                        <h6>Image Preview:</h6>
+                        <img src={formData.imagePreviewUrl} alt="Preview" style={{ maxWidth: '100px', height: 'auto' }} />
+                    </div>
+                )}
+
 
 
                 <div className='submit-button'>
@@ -178,7 +202,7 @@ function Form() {
 
             </div>
 
-        </div>
+        </div >
 
     )
 
