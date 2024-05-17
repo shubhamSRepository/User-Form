@@ -1,0 +1,32 @@
+.form-container{
+    margin: 3rem;
+    width: 70vw;
+    border: 1px solid black;
+    height: 200vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+.form-heading{
+    /* border: 1px solid black; */
+    margin: 1rem;
+}
+
+.form-body{
+    margin-top: 2rem;
+    width: 60%;
+    /* border: 1px solid black; */
+
+}
+
+.form-body div{
+    margin: 1rem;
+    display: flex;
+}
+
+.form-body h4{
+    flex: 0.5;
+}
