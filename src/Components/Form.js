@@ -172,6 +172,7 @@ function Form() {
                 </div>
 
 
+                {/* adding image with preview */}
                 <div className='user-image'>
 
                     <h4>Image</h4>
@@ -185,6 +186,7 @@ function Form() {
                     />
                 </div>
 
+                {/* image preview */}
                 {formData.imagePreviewUrl && (
                     <div>
                         <h6>Image Preview:</h6>
